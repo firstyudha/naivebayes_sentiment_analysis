@@ -541,16 +541,16 @@ def analyze():
       clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
       background: #6a11cb;
       filter: drop-shadow(0 0 4px rgba(106, 17, 203, 0.5));
-      top: 60%;
-      left: 15%;
+      top: 50%;
+      right: 10%;
       animation: floatLeftRight 14s ease-in-out infinite;
     }
 
     .shape3 {
       width: 100px;
       height: 57.74px; /* For hexagon shape */
-      top: 40%;
-      left: 75%;
+      top: 90%;
+      left: 50%;
       animation: floatSlowRotate 25s linear infinite;
       opacity: 0.1;
     }
