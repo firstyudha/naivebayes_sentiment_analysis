@@ -341,7 +341,6 @@ def index():
 
     ''')
 
-
 @app.route('/analyze', methods=['POST'])
 def analyze():
     try:
@@ -402,12 +401,6 @@ def analyze():
 
         positive_wc = generate_wordcloud(positive_text, 'Positive')
         negative_wc = generate_wordcloud(negative_text, 'Negative')
-        
-        buf = io.BytesIO()
-        plt.savefig(buf, format='png', bbox_inches='tight')
-        plt.close()
-        buf.seek(0)
-        cm_img = base64.b64encode(buf.read()).decode('utf-8')
         
         return render_template_string('''
 <!DOCTYPE html>
@@ -635,9 +628,11 @@ def analyze():
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
-        ''', positive_wc=positive_wc, negative_wc=negative_wc, cm_img=cm_img, sentiment_counts=sentiment_counts, sentiment_segmentation=sentiment_segmentation)
+        ''', 
+        positive_wc=positive_wc, 
+        negative_wc=negative_wc, 
+        sentiment_counts=sentiment_counts, 
+        sentiment_segmentation=sentiment_segmentation)
     
     except Exception as e:
         return render_template_string('''
